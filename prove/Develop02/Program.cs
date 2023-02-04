@@ -1,4 +1,7 @@
 using System;
+// This project has excelled requirements in two different ways. 
+// First, it has a safeguard so the system only runs a number 1-5 for the menu prompts.
+// Second, it will always save and load '.csv' files for the Journals.
 
 class Program
 {

@@ -16,7 +16,7 @@ class JournalEntry{
 
         // User's Journal Entry
         Console.Write(">"); // Shows '>' or entry starting point, but dosen't save it to the entry.
-        Console.WriteLine(); // Blank for spacing
         _userEntry = Console.ReadLine();
+        Console.WriteLine(); // Blank for spacing
     }
 }
