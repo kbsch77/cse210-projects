@@ -1,5 +1,5 @@
 using System;
-//To exceeed requirements, I added a level up mechanic in the class GameFunctions that scales with the score. It also saves and loads too.
+//To exceed requirements, I added a level up mechanic in the class GameFunctions that scales with the score. It also saves and loads too.
 class Program
 {
     static void Main(string[] args)
