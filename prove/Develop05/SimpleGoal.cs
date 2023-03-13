@@ -1,14 +1,21 @@
-class SimpleGoal : Goal{
+class SimpleGoal : Goal
+{
     private bool _complete = false;
 
-    public override void CreateGoal(string name, string description, int points, bool complete, int completionNumber = 0, int currentNumber = 0, int bonusPoints = 0){
+    //Sets the goal vial loading
+    public override void CreateGoal
+        (string name, string description, int points, bool complete, int completionNumber = 0, int currentNumber = 0, int bonusPoints = 0)
+    {
         SetGoalType("EternalGoal");
         SetName(name);
         SetDescription(description);
         SetPoints(points);
         _complete = complete;
     }
-    public override void SetGoal(){
+
+    //Sets the goal vial the user
+    public override void SetGoal()
+    {
         SetGoalType("SimpleGoal");
 
         Console.Write("What is the name of your goal? ");
@@ -25,17 +32,20 @@ class SimpleGoal : Goal{
 
     public override int RecordProgress()
     {
-        if(!_complete){
+        if(!_complete)
+        {
             _complete = true;
             return GetPoints();
         }
-        else{
+        else
+        {
             Console.WriteLine("This goal has already been completed.");
             return 0;
         }
     }
 
-    public override void DisplayProgress(){
+    public override void DisplayProgress()
+    {
         if(_complete)
             Console.WriteLine($"[X] {GetName()} ({GetDescription()})");
 
@@ -43,7 +53,9 @@ class SimpleGoal : Goal{
             Console.WriteLine($"[ ] {GetName()} ({GetDescription()})");
     }
 
-    public override string SaveGoal(){  
+    //creates a string for a .txt file line
+    public override string SaveGoal()
+    {  
         string goalFormat = GetGoalType();
         goalFormat = (goalFormat + "," + GetName());
         goalFormat = (goalFormat + "," + GetDescription());
@@ -54,10 +66,12 @@ class SimpleGoal : Goal{
 
 
     //Getters & Setters
-    public void SetComplete(bool complete){
+    public void SetComplete(bool complete)
+    {
         _complete = complete;
     }
-    public bool GetComplete(){
+    public bool GetComplete()
+    {
         return _complete;
     }
 }

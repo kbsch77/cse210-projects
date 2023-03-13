@@ -4,6 +4,7 @@ class Program
 {
     static void Main(string[] args)
     {
+        //Local Variables
         GameFunctions game = new GameFunctions();
         List<Goal> goalList = new List<Goal>();
 
@@ -15,9 +16,11 @@ class Program
         string userEntry;
         int userChoice = 0;
         
-        do{
+        do
+        {
             game.DisplayScore();
-
+            
+            //Opening Menu
             Console.WriteLine("Menu Options:");
             Console.WriteLine("  1. Create New Goal");
             Console.WriteLine("  2. List Goals");
@@ -33,7 +36,8 @@ class Program
             int counter;
 
             //Create New Goal
-            if(userChoice == 1){
+            if(userChoice == 1)
+            {
                 Console.WriteLine("The types of goals are:");
                 Console.WriteLine("  1. Simple Goal");
                 Console.WriteLine("  2. Eternal Goal");
@@ -47,10 +51,12 @@ class Program
             }
 
             //List Goals
-            else if(userChoice == 2){
+            else if(userChoice == 2)
+            {
                 counter = 1;
                 Console.WriteLine("The goals are:");
-                foreach(Goal goal in goalList){
+                foreach(Goal goal in goalList)
+                {
                     Console.Write($"{counter}. ");
                     goal.DisplayProgress();
                     counter ++;
@@ -58,7 +64,8 @@ class Program
             }
 
             //Save Goals
-            else if(userChoice == 3){
+            else if(userChoice == 3)
+            {
                 Console.Write("What is the filename for the goal file? ");
                 fileName = Console.ReadLine();
                 fileName = (fileName + ".txt");
@@ -66,7 +73,8 @@ class Program
             }
 
             //Load Goals
-            else if(userChoice == 4){
+            else if(userChoice == 4)
+            {
                 Console.Write("What is the filename for the goal file? ");
                 fileName = Console.ReadLine();
                 fileName = (fileName + ".txt");
@@ -75,9 +83,11 @@ class Program
             }
 
             //Record Event
-            else if(userChoice == 5){
+            else if(userChoice == 5)
+            {
                 counter = 1;
-                foreach(Goal goal in goalList){
+                foreach(Goal goal in goalList)
+                {
                     Console.WriteLine($"{counter}. {goal.GetName()}");
                     counter ++;
                 }
