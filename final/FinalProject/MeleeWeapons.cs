@@ -1,8 +1,21 @@
 class MeleeWeapons : Weapons
 {
-    public MeleeWeapons()
+    public MeleeWeapons(string name)
     {
+        SetMeleeWeapons();
+        var weapons = GetMeleeWeapons();
+        List<string> info = weapons[name];
 
+        SetWeaponName(name);
+        SetCost(info[0]);
+        SetDamageDice(info[1]);
+        SetDamageType(info[2]);
+        SetWeight(info[3]);
+        List<string> attributes = new List<string>()
+        {
+            info[4], info[5], info[6]
+        };
+        SetAttributes(attributes);
     }
 
     public override string GetWeaponInfo ()

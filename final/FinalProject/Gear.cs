@@ -1,26 +1,83 @@
-abstract class Gear
+class Gear
 {
-    private List<string> _weapons;
-    private List<string> _armors;
+    private Dictionary<string, List<string>> _meleeWeapons;
+    private Dictionary<string, List<string>> _RangedWeapons;
+    private Dictionary<string, List<string>> _armors;
     private string _weight;
     private string _cost;
 
-    public abstract string GetWeapon (string weapon);
-    public abstract string GetArmor(string armor);
-
-    public void SetWeapons()
-    {
-        
+    public Gear(){
+        SetArmors();
+        SetMeleeWeapons();
+        SetRangedWeapons();
     }
-    public List<string> GetWeapons()
+
+    public virtual string GetWeapon (string weapon)
     {
-        return _weapons;
+        return null;
+    }
+    public virtual string GetArmor(string armor)
+    {
+        return null;
+    }
+
+    public void SetMeleeWeapons()
+    {
+        string[] lines = System.IO.File.ReadAllLines("MeleeWeapons.csv");
+
+        foreach (string line in lines)
+        {
+            string[] parts = line.Split(",");
+            string name = parts[0];
+            List<string> info = new List<string>()
+            {
+                parts[1], parts[2], parts[3], parts[4], parts[5], parts[6], parts[7]
+            };
+
+            _meleeWeapons.Add(name, info);
+        }
+    }
+    public Dictionary<string, List<string>> GetMeleeWeapons()
+    {
+        return _meleeWeapons;
+    }
+    public void SetRangedWeapons()
+    {
+        string[] lines = System.IO.File.ReadAllLines("RangedWeapons.csv");
+
+        foreach (string line in lines)
+        {
+            string[] parts = line.Split(",");
+            string name = parts[0];
+            List<string> info = new List<string>()
+            {
+                parts[1], parts[2], parts[3], parts[4], parts[5], parts[6], parts[7], parts[8], parts[9], parts[10]
+            };
+
+            _RangedWeapons.Add(name, info);
+        }
+    }
+    public Dictionary<string, List<string>> GetRangedWeapons()
+    {
+        return _meleeWeapons;
     }
     public void SetArmors()
     {
+        string[] lines = System.IO.File.ReadAllLines("Armor.csv");
 
+        foreach (string line in lines)
+        {
+            string[] parts = line.Split(",");
+            string name = parts[0];
+            List<string> info = new List<string>()
+            {
+                parts[1], parts[2], parts[3], parts[4], parts[5], parts[6]
+            };
+
+            _armors.Add(name, info);
+        }
     }
-    public List<string> GetArmors()
+    public Dictionary<string, List<string>> GetArmors()
     {
         return _armors;
     }

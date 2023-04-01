@@ -8,41 +8,41 @@ abstract class Weapons : Gear
 
     public abstract string GetWeaponInfo();
 
-    public void SetDamageType()
+    public void SetDamageType(string damageType)
     {
-        
+        _damageType = damageType;
     }
     public string GetDamageType()
     {
         return _damageType;
     }
-    public void SetDamageDice()
+    public void SetDamageDice(string dice)
     {
-        
+        _damageDice = dice;
     }
     public string GetDamageDice()
     {
         return _damageDice;
     }
-    public void SetModifyerAttribute()
+    public void SetModifyerAttribute(string modifyer)
     {
-        
+        _modifyerAttribute = modifyer;
     }
     public string GetModifyerAttribute()
     {
         return _modifyerAttribute;
     }
-    public void SetWeaponName()
+    public void SetWeaponName(string name)
     {
-        
+        _weaponName = name;
     }
     public string GetWeaponName()
     {
         return _weaponName;
     }
-    public void SetAttributes()
+    public void SetAttributes(List<string> attributes)
     {
-        
+        _attributes = attributes;
     }
     public List<string> GetAttributes()
     {

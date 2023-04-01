@@ -3,11 +3,27 @@ class RangedWeapons : Weapons
     private int _optimalRange;
     private int _maxRange;
     private int _ammunitionAmmount;
-    private string _ammunitionType;
+    private string _attackType;
 
-    public RangedWeapons()
+    public RangedWeapons(string name)
     {
+        SetRangedWeapons();
+        var weapons = GetRangedWeapons();
+        List<string> info = weapons[name];
 
+        SetWeaponName(name);
+        SetCost(info[0]);
+        SetDamageDice(info[1]);
+        SetDamageType(info[2]);
+        SetWeight(info[3]);
+        _attackType = info[4];
+        _optimalRange = int.Parse(info[5]);
+        _maxRange = int.Parse(info[6]);
+        List<string> attributes = new List<string>()
+        {
+            info[7], info[8], info[9]
+        };
+        SetAttributes(attributes);
     }
 
     public override string GetWeaponInfo()
