@@ -5,7 +5,6 @@ class Character{
     private int _intelligence;
     private int _wisdom;
     private int _charisma;
-    private int _proficiencyBonus = 1;
     private string _name;
     private int _level =1;
 
@@ -31,6 +30,62 @@ class Character{
         _charisma = charisma;
     }
 
+    public int ModifyStats(string attribute)
+    {
+        int modifyer;
+        int stat = 0;
+
+        if(attribute == "strength")
+            stat = _strength;
+        else if(attribute == "dexterity")
+            stat = _dexterity;
+        else if(attribute == "constitution")
+            stat = _constitution;
+        else if(attribute == "intelligence")
+            stat = _intelligence;
+        else if(attribute == "wisdom")
+            stat = _wisdom;
+        else if(attribute == "charisma")
+            stat = _charisma;
+
+        if(stat == 30)
+            modifyer = 10;
+        else if(Enumerable.Range(28,30).Contains(stat))
+            modifyer = 9;
+        else if(Enumerable.Range(26,28).Contains(stat))
+            modifyer = 8;
+        else if(Enumerable.Range(24,26).Contains(stat))
+            modifyer = 7;
+        else if(Enumerable.Range(22,24).Contains(stat))
+            modifyer = 6;
+        else if(Enumerable.Range(20,22).Contains(stat))
+            modifyer = 5;
+        else if(Enumerable.Range(18,20).Contains(stat))
+            modifyer = 4;
+        else if(Enumerable.Range(16,18).Contains(stat))
+            modifyer = 3;
+        else if(Enumerable.Range(14,16).Contains(stat))
+            modifyer = 2;
+        else if(Enumerable.Range(12,14).Contains(stat))
+            modifyer = 1;
+        else if(Enumerable.Range(10,12).Contains(stat))
+            modifyer = 0;
+        else if(Enumerable.Range(8,10).Contains(stat))
+            modifyer = -1;
+        else if(Enumerable.Range(6,8).Contains(stat))
+            modifyer = -2;
+        else if(Enumerable.Range(4,6).Contains(stat))
+            modifyer = -3;
+        else if(Enumerable.Range(2,4).Contains(stat))
+            modifyer = -4;
+        else if(stat == 1)
+            modifyer = -5;
+        else
+            modifyer = 0;
+        
+        return modifyer;
+    }
+
     //Getters & Setters
     public void SetName(string name)
     {
@@ -43,6 +98,7 @@ class Character{
     public void SetLevel(int level = 1)
     {
         _level = level;
+
     }
     public int GetLevel()
     {
