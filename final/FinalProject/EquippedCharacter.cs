@@ -1,24 +1,14 @@
 class EquippedCharacter : Character
 {
-    private string _meleeWeapon;
-    private string _rangedWeapon;
-    private string _armor;
+    private MeleeWeapons _meleeWeapon;
+    private RangedWeapons _rangedWeapon;
+    private Armors _armor;
     private bool _sheild;
     private bool _proficiency;
 
-    public EquippedCharacter (string name, string meleeWeapon = "n/a", string rangedWeapon = "n/a", string armor = "n/a", bool sheild = false) 
-    : base (name)
-    {
-        SetName(name);
-        RollStats();
-        _meleeWeapon = meleeWeapon;
-        _rangedWeapon = rangedWeapon;
-        _armor = armor;
-        _sheild = sheild;
-    }
     public EquippedCharacter 
-    (string name, int strength=1, int dexterity=1, int constitution=1, int intelligence=1, int wisdom=1, int charisma=1, 
-        string meleeWeapon = "n/a", string rangedWeapon = "n/a", string armor = "n/a", bool sheild = false) 
+    (string name, int strength, int dexterity, int constitution, int intelligence, int wisdom, int charisma, 
+        MeleeWeapons meleeWeapon = null, RangedWeapons rangedWeapon = null, Armors armor = null, bool sheild = false) 
     : base (name, strength, dexterity, constitution, intelligence, wisdom, charisma)
     {
         SetName(name);
@@ -46,4 +36,17 @@ class EquippedCharacter : Character
 
     }
 
+
+    public override MeleeWeapons GetMeleeWeapon()
+    {
+        return _meleeWeapon;
+    }
+    public override RangedWeapons GetRangedWeapon()
+    {
+        return _rangedWeapon;
+    }
+    public override Armors GetArmor()
+    {
+        return _armor;
+    }
 }

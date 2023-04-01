@@ -1,8 +1,8 @@
 class RecordHub 
 {
-    public void SaveCharacter (string fileName)
+    public void SaveCharacter (Character character, string fileName)
     {
-
+        
     }
     public Character LoadCharacter (string fileName)
     {

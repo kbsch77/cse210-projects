@@ -24,4 +24,20 @@ abstract class Gear
     {
         return _armors;
     }
+    public void SetWeight(string weight)
+    {
+        _weight = weight;
+    }
+    public string GetWeight()
+    {
+        return _weight;
+    }
+    public void SetCost(string cost)
+    {
+        _cost = cost;
+    }
+    public string GetCost()
+    {
+        return _cost;
+    }
 }

@@ -46,4 +46,43 @@ class Character{
     {
         return _level;
     }
+    public int GetStrength()
+    {
+        return _strength;
+    }
+    public int GetDexterity()
+    {
+        return _dexterity;
+    }
+    public int GetConstitution()
+    {
+        return _constitution;
+    }
+    public int GetIntelligence()
+    {
+        return _intelligence;
+    }
+    public int GetWisdom()
+    {
+        return _wisdom;
+    }
+    public int GetCharisma()
+    {
+        return _charisma;
+    }
+
+
+    //Technical Difficulties
+    public virtual MeleeWeapons GetMeleeWeapon()
+    {
+        return null;
+    }
+    public virtual RangedWeapons GetRangedWeapon()
+    {
+        return null;
+    }
+    public virtual Armors GetArmor()
+    {
+        return null;
+    }
 }

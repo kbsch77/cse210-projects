@@ -1,5 +1,6 @@
 class Armors : Gear
 {
+    private string _armorName;
     private string _armorType;
     private int _armorClassBonus;
     private int _streangthRequirement;
@@ -10,10 +11,16 @@ class Armors : Gear
 
     }
 
-    public string GetArmorInfo (string armor)
+    public string GetArmorInfo ()
     {
+        string armorInfo = (_armorName + ", " + _armorType + ", AC +" + _armorClassBonus + ", " + "Strength of " + _streangthRequirement + " required");
+        
+        if(_stealthDisadvantage)
+        {
+            armorInfo = armorInfo + (", Stealth Disadvantage");
+        }
 
-        return armor;
+        return armorInfo;
     }
     public override  string GetArmor(string armor)
     {

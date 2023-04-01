@@ -6,7 +6,7 @@ abstract class Weapons : Gear
     private string _weaponName;
     private List<string> _attributes;
 
-    public abstract string GetWeaponInfo (string weapon);
+    public abstract string GetWeaponInfo();
 
     public void SetDamageType()
     {

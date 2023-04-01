@@ -6,11 +6,21 @@ class MeleeWeapons : Weapons
     {
 
     }
-    
-    public override string GetWeaponInfo (string weapon)
+
+    public override string GetWeaponInfo ()
     {
-        
-        return weapon;
+        string weaponInfo = (GetWeaponName() + ", " + GetDamageDice() + " " + GetDamageType());
+
+        List<string> attributes = GetAttributes();
+        foreach(string attribute in attributes)
+        {
+            if(attribute != "n/a")
+            {
+                weaponInfo = weaponInfo + (", " + attribute);
+            }
+        }
+
+        return weaponInfo;
     }
     public override string GetWeapon (string weapon)
     {

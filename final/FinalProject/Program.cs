@@ -4,8 +4,10 @@ class Program
 {
     static void Main(string[] args)
     {
-        Character playerCharacter;
-        List<Gear> equipment = new List<Gear>();
+        Character playerCharacter = new Character("placeholder");
+        MeleeWeapons meleeWeapon;
+        RangedWeapons rangedWeapon;
+        Armors armor;
         Combat fight;
         RecordHub records = new RecordHub();
 
@@ -61,33 +63,33 @@ class Program
                     {
                         Console.WriteLine("Strength is your ability to crush a tomato.");
                         Console.Write("Enter your strength (min 1 - max 20):");
-                        playerChoice = Console.ReadLine();
-                        strength = int.Parse(playerChoice);
+                        string playerStatChoice = Console.ReadLine();
+                        strength = int.Parse(playerStatChoice);
 
                         Console.WriteLine("Dexterity is your ability to dodge a thrown tomato.");
                         Console.Write("Enter your dexterity (min 1 - max 20):");
-                        playerChoice = Console.ReadLine();
-                        dexterity = int.Parse(playerChoice);
+                        playerStatChoice = Console.ReadLine();
+                        dexterity = int.Parse(playerStatChoice);
 
                         Console.WriteLine("Constitution is your ability to eat a rotten tomato.");
                         Console.Write("Enter your constitution (min 1 - max 20):");
-                        playerChoice = Console.ReadLine();
-                        constitution = int.Parse(playerChoice);
+                        playerStatChoice = Console.ReadLine();
+                        constitution = int.Parse(playerStatChoice);
 
                         Console.WriteLine("Intelligence is knowing that a tomato is a fruit.");
                         Console.Write("Enter your intelligence (min 1 - max 20):");
-                        playerChoice = Console.ReadLine();
-                        intelligence = int.Parse(playerChoice);
+                        playerStatChoice = Console.ReadLine();
+                        intelligence = int.Parse(playerStatChoice);
 
                         Console.WriteLine("Wisdom is knowing not to put a tomato in a fruit salad.");
                         Console.Write("Enter your wisdom (min 1 - max 20):");
-                        playerChoice = Console.ReadLine();
-                        wisdom = int.Parse(playerChoice);
+                        playerStatChoice = Console.ReadLine();
+                        wisdom = int.Parse(playerStatChoice);
 
                         Console.WriteLine("Charisma is your ability to sell a tomato based fruit salad.");
                         Console.Write("Enter your charisma (min 1 - max 20):");
-                        playerChoice = Console.ReadLine();
-                        charisma = int.Parse(playerChoice);
+                        playerStatChoice = Console.ReadLine();
+                        charisma = int.Parse(playerStatChoice);
 
                         playerCharacter = new Character(characterName, strength, dexterity, constitution, intelligence, wisdom, charisma);
                     }
@@ -109,14 +111,22 @@ class Program
         endLoop = false;
         Console.Clear();
 
+
+        strength = playerCharacter.GetStrength();
+        dexterity = playerCharacter.GetDexterity();
+        constitution = playerCharacter.GetConstitution();
+        intelligence = playerCharacter.GetIntelligence();
+        wisdom = playerCharacter.GetWisdom();
+        charisma = playerCharacter.GetCharisma();
+
         //Character equipment, combat, and saving options and processes
         do
         {
             Console.WriteLine("Menu:");
-            Console.WriteLine(" 1. Add Adventure Gear");
-            Console.WriteLine(" 2. Change Equipment");
-            Console.WriteLine(" 3. Combat");
-            Console.WriteLine(" 4. Save Character");
+            Console.WriteLine(" 1. Add or Change Adventure Gear");
+            Console.WriteLine(" 2. Combat");
+            Console.WriteLine(" 3. Save Character");
+            Console.WriteLine(" 4. View Character information");
             Console.WriteLine(" 5. Quit");
             Console.Write("Enter your number: ");
             playerChoice = Console.ReadLine();
@@ -127,8 +137,8 @@ class Program
                 string playerEquiptChoice;
                 do
                 {
-                    Console.WriteLine("Choose what you would like to add:");
-                    Console.WriteLine(" 1. A Melee Weaopn");
+                    Console.WriteLine("Choose what you would like to add or change:");
+                    Console.WriteLine(" 1. A Melee Weapon");
                     Console.WriteLine(" 2. A Ranged Weapon");
                     Console.WriteLine(" 3. Armor");
                     Console.WriteLine(" 4. All Three");
@@ -138,49 +148,91 @@ class Program
                     //New Melee Weapon
                     if(playerEquiptChoice == "1")
                     {
-                        equipment.Add(new MeleeWeapons());
+                        playerCharacter = new EquippedCharacter(characterName, strength, dexterity, constitution, intelligence, wisdom, charisma, new MeleeWeapons());
                     }
 
                     //New Ranged Weapon
                     else if(playerEquiptChoice == "2")
                     {
-                        equipment.Add(new RangedWeapons());
+                        playerCharacter = new EquippedCharacter(characterName, strength, dexterity, constitution, intelligence, wisdom, charisma, null, new RangedWeapons());
                     }
 
                     //New Armor
                     else if(playerEquiptChoice == "3")
                     {
-                        equipment.Add(new Armors());
+                        playerCharacter = new EquippedCharacter(characterName, strength, dexterity, constitution, intelligence, wisdom, charisma, null, null, new Armors());
                     }
 
                     //New Melee Weapon, Ranged Weapon, and Armor
                     else if(playerEquiptChoice == "4")
                     {
-                        equipment.Add(new MeleeWeapons());
-                        equipment.Add(new RangedWeapons());
-                        equipment.Add(new Armors());
+                        playerCharacter = new EquippedCharacter(characterName, strength, dexterity, constitution, intelligence, wisdom, charisma, new MeleeWeapons(), new RangedWeapons(), new Armors());
                     }
 
                     else Console.WriteLine("please enter a number from the menu.");
                 }while(playerEquiptChoice != "1" || playerEquiptChoice != "2" ||playerEquiptChoice != "3" ||playerEquiptChoice != "4");
             }
 
-            //Allows User to Change Equipped Gear
+            //Both Melee and Ranged Combat options
             else if(playerChoice == "2")
             {
+                Console.WriteLine("Are you engaging in melee or ranged combat?");
+                Console.WriteLine(" 1. Melee Combat");
+                Console.WriteLine(" 2. Ranged Combat");
+                Console.Write("Enter your number: ");
+                string combatChoice = Console.ReadLine();
 
-            }
+                do
+                {
+                    //Melee Combat
+                    if(combatChoice != "1")
+                    {
+                        fight = new MeleeCombat();
+                    }
 
-            //Both Melee and Ranged Combat options
-            else if(playerChoice == "3")
-            {
+                    //Ranged Combat
+                    else if(combatChoice != "2")
+                    {
+                        fight = new RangedCombat();
+                    }
 
+                    else Console.WriteLine("please enter a number from the menu.");
+                }while(combatChoice != "1" || combatChoice != "2");
             }
 
             //Save Character and it's Equippment
+            else if(playerChoice == "3")
+            {
+                records.SaveCharacter(playerCharacter, characterName);
+            }
+
+            //Shows Character Information
             else if(playerChoice == "4")
             {
-                records.SaveCharacter(characterName);
+                Console.WriteLine($"Name: {characterName}");
+                Console.WriteLine($"Level: {playerCharacter.GetLevel()}");
+                Console.WriteLine($"Strength: {strength}");
+                Console.WriteLine($"Dexterity: {dexterity}");
+                Console.WriteLine($"Constitution: {constitution}");
+                Console.WriteLine($"Intelligence: {intelligence}");
+                Console.WriteLine($"Wisdom: {wisdom}");
+                Console.WriteLine($"Charisma: {charisma}");
+                Console.WriteLine();
+
+                if(playerCharacter is EquippedCharacter)
+                {
+                    meleeWeapon = playerCharacter.GetMeleeWeapon();
+                    rangedWeapon = playerCharacter.GetRangedWeapon();
+                    armor = playerCharacter.GetArmor();
+
+                    Console.WriteLine($"Melee Weapon: {meleeWeapon.GetWeaponInfo()}");
+                    Console.WriteLine($"Ranged Weapon: {rangedWeapon.GetWeaponInfo()}");
+                    Console.WriteLine($"Armor: {armor.GetArmorInfo()}");
+                }
+
+                Console.WriteLine();
+                Console.WriteLine("Presss enter when you're ready.");
+                Console.ReadLine();
             }
 
             //Quit

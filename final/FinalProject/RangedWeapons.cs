@@ -1,6 +1,5 @@
 class RangedWeapons : Weapons
 {
-    private int _minimalRange;
     private int _optimalRange;
     private int _maxRange;
     private int _ammunitionAmmount;
@@ -10,11 +9,21 @@ class RangedWeapons : Weapons
     {
 
     }
-    
-    public override string GetWeaponInfo(string weapon)
-    {
 
-        return weapon;
+    public override string GetWeaponInfo()
+    {
+        string weaponInfo = (GetWeaponName() + ", " + GetDamageDice() + " " + GetDamageType() + ", (Range " + _optimalRange + "/" + _maxRange + ")");
+
+        List<string> attributes = GetAttributes();
+        foreach(string attribute in attributes)
+        {
+            if(attribute != "n/a")
+            {
+                weaponInfo = weaponInfo + (", " + attribute);
+            }
+        }
+
+        return weaponInfo;
     }
     public override string GetWeapon (string weapon)
     {
