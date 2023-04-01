@@ -12,7 +12,13 @@ class Character{
     public Character (string name)
     {
         _name = name;
-        RollStats();
+        DieRoller dice = new DieRoller();
+        _strength = dice.RollStat();
+        _dexterity = dice.RollStat();
+        _constitution = dice.RollStat();
+        _intelligence = dice.RollStat();
+        _wisdom = dice.RollStat();
+        _charisma = dice.RollStat();
     }
     public Character (string name, int strength=1, int dexterity=1, int constitution=1, int intelligence=1, int wisdom=1, int charisma=1)
     {
@@ -23,10 +29,6 @@ class Character{
         _intelligence = intelligence;
         _wisdom = wisdom;
         _charisma = charisma;
-    }
-    public void RollStats ()
-    {
-
     }
 
     //Getters & Setters

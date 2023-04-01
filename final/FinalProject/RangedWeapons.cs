@@ -7,7 +7,6 @@ class RangedWeapons : Weapons
 
     public RangedWeapons(string name)
     {
-        SetRangedWeapons();
         var weapons = GetRangedWeapons();
         List<string> info = weapons[name];
 

@@ -2,7 +2,6 @@ class MeleeWeapons : Weapons
 {
     public MeleeWeapons(string name)
     {
-        SetMeleeWeapons();
         var weapons = GetMeleeWeapons();
         List<string> info = weapons[name];
 

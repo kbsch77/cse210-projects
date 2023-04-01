@@ -1,8 +1,8 @@
 class Gear
 {
-    private Dictionary<string, List<string>> _meleeWeapons;
-    private Dictionary<string, List<string>> _RangedWeapons;
-    private Dictionary<string, List<string>> _armors;
+    private Dictionary<string, List<string>> _meleeWeapons = new Dictionary<string, List<string>>();
+    private Dictionary<string, List<string>> _RangedWeapons = new Dictionary<string, List<string>>();
+    private Dictionary<string, List<string>> _armors = new Dictionary<string, List<string>>();
     private string _weight;
     private string _cost;
 
@@ -59,7 +59,7 @@ class Gear
     }
     public Dictionary<string, List<string>> GetRangedWeapons()
     {
-        return _meleeWeapons;
+        return _RangedWeapons;
     }
     public void SetArmors()
     {

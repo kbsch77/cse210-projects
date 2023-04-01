@@ -8,7 +8,6 @@ class Armors : Gear
 
     public Armors(string name)
     {
-        SetArmors();
         var armors = GetArmors();
         List<string> info = armors[name];
 
