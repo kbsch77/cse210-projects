@@ -1,7 +1,5 @@
 class MeleeWeapons : Weapons
 {
-    private int _reach;
-
     public MeleeWeapons()
     {
 
