@@ -2,13 +2,13 @@ abstract class Combat
 {
     private int _enemyArmorClass;
 
-    public abstract void Attack (int attackRoll);
+    public abstract void Attack (int attackRoll, string weapon);
     public void Hit (string weapon, int damageRoll)
     {
         Console.WriteLine("");
         Console.WriteLine();
     }
-    public void Miss ()
+    public void Miss()
     {
         Console.WriteLine("You missed.");
         Console.WriteLine();
@@ -22,4 +22,6 @@ abstract class Combat
     {
         return _enemyArmorClass;
     }
+
+    public abstract int UseAmmunition(int v);
 }

@@ -49,4 +49,9 @@ class DieRoller{
             }
             return total;
     }
+    public int AttackRoll(string diceInfo)
+    {
+
+        return 0;
+    }
 }

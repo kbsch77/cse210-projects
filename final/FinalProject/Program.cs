@@ -10,6 +10,7 @@ class Program
         RangedWeapons rangedWeapon;
         Armors armor;
         Combat fight;
+        DieRoller roller = new DieRoller();
         RecordHub records = new RecordHub();
 
         Console.WriteLine("Welcome to D&D Character and Combat Manager!");
@@ -254,12 +255,21 @@ class Program
                     if(combatChoice != "1")
                     {
                         fight = new MeleeCombat();
+                        Weapons melee = playerCharacter.GetMeleeWeapon();
+                        fight.Attack(roller.AttackRoll(melee.GetDamageDice()), melee.GetWeaponName());
                     }
 
                     //Ranged Combat
                     else if(combatChoice != "2")
                     {
                         fight = new RangedCombat();
+                        RangedWeapons ranged = playerCharacter.GetRangedWeapon();
+                        if(ranged.GetAmmunitionAmmount() > 0)
+                        {
+                            ranged.SetAmmunitionAmmount(fight.UseAmmunition(ranged.GetAmmunitionAmmount()));
+                            fight.Attack(roller.AttackRoll(ranged.GetDamageDice()), ranged.GetWeaponName());
+                        }
+                        else Console.WriteLine("You have no ammunition for the attack.");
                     }
 
                     else Console.WriteLine("please enter a number from the menu.");

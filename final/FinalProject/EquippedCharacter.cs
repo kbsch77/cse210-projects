@@ -4,7 +4,7 @@ class EquippedCharacter : Character
     private RangedWeapons _rangedWeapon;
     private Armors _armor;
     private bool _sheild;
-    private bool _proficiency;
+    private bool _proficiency = false;
 
     public EquippedCharacter 
     (string name, int strength, int dexterity, int constitution, int intelligence, int wisdom, int charisma, 
@@ -48,5 +48,14 @@ class EquippedCharacter : Character
     public override Armors GetArmor()
     {
         return _armor;
+    }
+
+    public void SetProficency(bool proficient)
+    {
+        _proficiency = proficient;
+    }
+    public bool getProficiency()
+    {
+        return _proficiency;
     }
 }

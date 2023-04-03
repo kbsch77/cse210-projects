@@ -45,12 +45,17 @@ class RangedWeapons : Weapons
 
         return weapon;
     }
-        public override  string GetArmor(string armor)
+    public override  string GetArmor(string armor)
     {
         return armor;
     }
-        private void SetAmmunitionType()
+    
+    public void SetAmmunitionAmmount(int ammount)
     {
-
+        _ammunitionAmmount = ammount;
+    }
+    public int GetAmmunitionAmmount()
+    {
+        return _ammunitionAmmount;
     }
 }

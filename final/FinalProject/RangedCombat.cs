@@ -1,10 +1,17 @@
 class RangedCombat : Combat
 {
-    public override void Attack (int attackRoll)
+    public override void Attack(int attackRoll, string weapon)
     {
+            Console.Write("What is the enemy's AC? ");
+            SetEnemyArmorClass(int.Parse(Console.ReadLine()));
 
+            if(attackRoll >= GetEnemyArmorClass())
+            {
+                Hit(weapon, attackRoll);
+            }
+            else Console.WriteLine("You missed.");
     }
-    public int UseAmmunition (int ammount)
+    public override int UseAmmunition (int ammount)
     {
         return ammount --;
     }
