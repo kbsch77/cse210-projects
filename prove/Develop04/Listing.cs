@@ -44,7 +44,7 @@ public class Listing : Activity{
      private void DisplayRandQuestion(){
         int index;
         do{
-            index = GetReandIndex(_questions.Count);
+            index = GetRandIndex(_questions.Count);
         }while(CompareUsedQuestions(index));
         _usedQuestions.Add(_questions[index]);
 

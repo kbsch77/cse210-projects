@@ -50,7 +50,7 @@ public class Activity{
     public int GetDuration(){
         return _duration;
     }
-    public int GetReandIndex(int range){
+    public int GetRandIndex(int range){
         Random random = new Random();
         int randInt = random.Next(range);
         return randInt;

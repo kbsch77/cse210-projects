@@ -48,7 +48,7 @@ public class Reflection : Activity{
     private void DisplayRandPrompt(){
         int index;
         do{
-            index = GetReandIndex(_prompts.Count);
+            index = GetRandIndex(_prompts.Count);
         }while(CompareUsedPrompts(index));
         _usedPrompts.Add(_prompts[index]);
 
@@ -62,7 +62,7 @@ public class Reflection : Activity{
     private void DisplayRandQuestion(){
         int index;
         do{
-            index = GetReandIndex(_questions.Count);
+            index = GetRandIndex(_questions.Count);
         }while(CompareUsedQuestions(index));
         _usedQuestions.Add(_questions[index]);
         
